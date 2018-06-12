@@ -35,6 +35,12 @@ MongoClient.connect(
     //     console.log(result);
     //   });
 
+    db.collection("Users")
+      .findOneAndDelete({ _id: new ObjectID("5b1f3635dd6d6316ec5e5a73") })
+      .then(results => {
+        console.log(JSON.stringify(results, undefined, 2));
+      });
+
     // client.close();
   }
 );
