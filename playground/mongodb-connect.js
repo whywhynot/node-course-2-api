@@ -5,6 +5,9 @@
 // console.log("name");
 const { MongoClient, ObjectID } = require("mongodb");
 
+var obj = new ObjectID();
+console.log(obj);
+
 MongoClient.connect(
   "mongodb://localhost:27017/TodoApp",
   (err, client) => {
@@ -27,19 +30,19 @@ MongoClient.connect(
     //   }
     // );
 
-    db.collection("Users").insertOne(
-      {
-        name: "Daniel",
-        age: 48,
-        location: "Largo, Florida"
-      },
-      (err, result) => {
-        if (err) {
-          return console.log("unable to insert todo", err);
-        }
-        console.log(result.ops[0]._id.getTimestamp());
-      }
-    );
+    // db.collection("Users").insertOne(
+    //   {
+    //     name: "Daniel",
+    //     age: 48,
+    //     location: "Largo, Florida"
+    //   },
+    //   (err, result) => {
+    //     if (err) {
+    //       return console.log("unable to insert todo", err);
+    //     }
+    //     console.log(result.ops[0]._id.getTimestamp());
+    //   }
+    // );
 
     client.close();
   }

@@ -15,17 +15,22 @@ MongoClient.connect(
     const db = client.db("Todoapp");
 
     db.collection("Todos")
-      .find({ _id: new ObjectID("5b1f3233bcc4cb06b85b1463") })
-      .toArray()
-      .then(
-        docs => {
-          console.log("Todos");
-          console.log(JSON.stringify(docs, undefined, 2));
+      .findOneAndUpdate(
+        {
+          _id: new ObjectID("5b1c7643f1a26ce461be5a67")
         },
-        err => {
-          console.log("Unable to retrieve documents", err);
+        {
+          $set: {
+            completed: true
+          }
+        },
+        {
+          returnOriginal: false
         }
-      );
+      )
+      .then(result => {
+        console.log(result);
+      });
 
     // client.close();
   }
